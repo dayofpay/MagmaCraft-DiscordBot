@@ -22,17 +22,20 @@ async function initCommands() {
         .addStringOption(option =>
             option.setName('player')
             .setDescription('Играч, на когото искате да проверите последното присъединяване'));
-            const getPrefix = new SlashCommandBuilder()
-            .setName('magmaprefix')
-            .setDescription('Показва prefix-a на играч')
-            .addStringOption(option =>
-                option.setName('player')
-                .setDescription('Играч, на когото искате да проверите prefix-a'));
-    
+    const getPrefix = new SlashCommandBuilder()
+        .setName('magmaprefix')
+        .setDescription('Показва prefix-a на играч')
+        .addStringOption(option =>
+            option.setName('player')
+            .setDescription('Играч, на когото искате да проверите prefix-a'));
+    const getUsers = new SlashCommandBuilder()
+            .setName('onlineusers')
+                .setDescription('Показва онлайн играчите')
+
     try {
         await rest.put(
             Routes.applicationGuildCommands(config.CLIENT_ID, config.GUILD_ID), {
-                body: [data.toJSON(), lastJoinCommand.toJSON(),getPrefix.toJSON()]
+                body: [data.toJSON(), lastJoinCommand.toJSON(), getPrefix.toJSON(),getUsers.toJSON()]
             }
         );
     } catch (error) {

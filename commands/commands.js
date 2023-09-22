@@ -54,8 +54,23 @@ async function getPrefix(interaction){
     }
 }
 
+async function getUsers(interaction){
+
+
+    try{
+        const onlineUsers = await services.getOnlineUsers(interaction);
+
+        await interaction.reply(`В момента има ${onlineUsers} онлайн играчи`);
+    } catch (error) {
+        console.error('Грешка при опит да се извлекат данните:', error);
+        await interaction.reply('Възникна грешка при опит да проверим онлайн играчите');
+    }
+}
+
+
 module.exports = {
     getTokens,
     lastJoin,
     getPrefix,
+    getUsers
 };

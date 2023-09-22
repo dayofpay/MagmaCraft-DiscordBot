@@ -61,5 +61,34 @@ async function getPlayerTokens(playerName) {
           throw error;
         }
     }
+
+
+    async function getOnlineUsers(){
+
+      const url = "https://v-devs.eu/softwares/magmacraft/api/user/list";
+
+      try{
+        const response = await fetch(url);
+
+        if(!response.ok){
+
+          throw new Error(`HTTP error! Status : ${response.status}`);
+        }
+
+
+        const result = await response.json();
+
+        const onlinePlayers = result["users"]["online"];
+
+
+
+        return onlinePlayers;
+      }
+      catch(error){
+        console.error(error);
+
+        throw error;
+      }
+    }
   
-module.exports = {getPlayerTokens : getPlayerTokens,getLastJoin : getLastJoin, getPrefix: getPrefix};
+module.exports = {getPlayerTokens : getPlayerTokens,getLastJoin : getLastJoin, getPrefix: getPrefix,getOnlineUsers:getOnlineUsers};

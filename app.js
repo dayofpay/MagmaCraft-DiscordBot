@@ -7,7 +7,7 @@ const config = require('./config/env');
 const commands = require('./commands/commands');
 const initCommands = require('./initCommands');
 client.on('ready', async () => {
-  console.log(`=== BOT AUTHENTICATION READY ===  \r\n\ Logged in as - ${client.user.tag}!`);
+  console.log(`=== ${config.LOCALES.READY_MESSAGE} ===  \r\n\ Logged in as - ${client.user.tag}!`);
   initCommands.initCommands();
 });
 
@@ -25,7 +25,10 @@ client.on('interactionCreate', async (interaction) => {
   else if(commandName === 'magmaprefix'){
     commands.getPrefix(interaction);
   }
+  else if(commandName === 'onlineusers'){
+    commands.getUsers(interaction);
+  }
 });
 
-// Log in your bot
+
 client.login(config.APP_TOKEN);

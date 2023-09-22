@@ -9,6 +9,7 @@ const GUILD_ID = process.env.GUILD_ID;
 
 const LOCALES = {
     'INVALID_COMMAND' : "Тази команда не съществува !",
+    'READY_MESSAGE' : "BOT AUTHENTICATION READY",
 }
 module.exports = {
     APP_TOKEN : APP_TOKEN,
